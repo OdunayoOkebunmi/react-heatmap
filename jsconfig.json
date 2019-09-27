@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@Components/*": [
+        "src/components/common/*"
+      ],
+      "@Actions/*": [
+        "src/redux/actions/*"
+      ],
+      "@Reducers/*": [
+        "src/redux/reducers/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "__tests__"
+  ]
+}

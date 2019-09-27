@@ -1,0 +1,2 @@
+export const ACTION_LOADING = 'ACTION_LOADING';
+export const NOT_LOADING = 'NOT_LOADING';
