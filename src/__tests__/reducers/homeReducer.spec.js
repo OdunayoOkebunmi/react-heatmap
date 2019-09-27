@@ -1,4 +1,4 @@
-import { actionLoading, actionFailed } from '@Actions/loanActions';
+import { actionLoading, actionFailed } from '@Actions/homeActions';
 import { initialState, homeReducer } from '@Reducers/homeReducer';
 
 let action, newState;

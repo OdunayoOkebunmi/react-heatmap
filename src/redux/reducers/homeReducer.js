@@ -4,7 +4,6 @@ export const initialState = {
   error: null,
   data: {},
   status: 'status',
-  loans: [],
 };
 
 export const homeReducer = (state = initialState, { type, payload }) => {
