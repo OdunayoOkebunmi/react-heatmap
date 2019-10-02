@@ -1,12 +1,19 @@
-import { ACTION_LOADING, NOT_LOADING } from '@Actions/types';
+import {
+  ACTION_LOADING,
+  NOT_LOADING,
+  GET_TRANSACTIONS,
+} from '@Actions/types';
 
 export const initialState = {
   error: null,
-  data: {},
+  data: [],
   status: 'status',
 };
 
-export const homeReducer = (state = initialState, { type, payload }) => {
+export const transactionsReducer = (state = initialState, {
+  type,
+  payload,
+}) => {
   switch (type) {
     case ACTION_LOADING:
       return {
@@ -18,7 +25,12 @@ export const homeReducer = (state = initialState, { type, payload }) => {
         ...state,
         error: payload.error,
         status: payload.status,
-
+      };
+    case GET_TRANSACTIONS:
+      return {
+        ...state,
+        data: payload.data,
+        status: payload.status,
       };
     default:
       return state;

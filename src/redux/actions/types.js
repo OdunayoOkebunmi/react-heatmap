@@ -1,2 +1,3 @@
 export const ACTION_LOADING = 'ACTION_LOADING';
 export const NOT_LOADING = 'NOT_LOADING';
+export const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
