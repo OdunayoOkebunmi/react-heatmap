@@ -1,5 +1,5 @@
 # react-heatmap
-
+Link to hosted site https://cocky-austin-abe337.netlify.com/
 ## Table of Content
  * [Getting Started](#getting-started)
 
