@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
+    "build": "webpack --mode production --config build-utils/webpack.config.js",
     "start": "export DEBUG=prod && node server/app.js",
     "dev": "webpack-dev-server --open --config build-utils/webpack.config.js --env.env=dev"
   },
