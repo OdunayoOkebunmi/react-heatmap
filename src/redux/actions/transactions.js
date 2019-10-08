@@ -36,8 +36,6 @@ export const getTransactions = () => async (dispatch) => {
   dispatch(actionLoading());
   try {
     dispatch(transactions(transactionData));
-    // eslint-disable-next-line no-console
-    console.log('transactionData');
     return transactionData;
   } catch (errorResponse) {
     dispatch(actionFailed(errorResponse));

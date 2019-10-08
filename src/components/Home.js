@@ -1,12 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import React, { Component } from 'react';
-import moment from 'moment';
 import CalendarHeatMap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTransactions } from '@Actions/transactions';
+import { getAccumulatedTransaction, getMinimumAndMaximumDate } from '../helpers/helper';
+import './style.css';
 
 class MainContent extends Component {
   constructor(props) {
@@ -29,9 +30,9 @@ class MainContent extends Component {
 
   render() {
     const { data } = this.state;
-    const dates = data.map(items => moment(items.date)._d);
-    const maximumDate = new Date(Math.max.apply(null, dates));
-    const minimumDate = new Date(Math.min.apply(null, dates));
+    const transactions = getAccumulatedTransaction(data);
+    const { maximumDate } = getMinimumAndMaximumDate(data);
+    const { minimumDate } = getMinimumAndMaximumDate(data);
     return (
       <main>
         <div>
@@ -41,9 +42,20 @@ class MainContent extends Component {
           <CalendarHeatMap
             startDate={minimumDate}
             endDate={maximumDate}
-            values={data}
+            values={transactions}
             showWeekdayLabels
             weekdayLabels={['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat']}
+            classForValue={(value) => {
+              if (!value) {
+                return 'color-empty';
+              }
+              if (value.profit < 300) return 'color-scale-1';
+              if (value.profit < 250) return 'color-scale-2';
+              if (value.profit < 0) return 'color-scale-3';
+              if (value.profit > 200) return 'color-scale-4';
+              if (value.profit > 300) return 'color-scale-5';
+              if (value.profit === 0) return 'color-scale-6';
+            }}
           />
         </div>
       </main>
